@@ -1,0 +1,6 @@
+#parameters:
+#
+services:
+#    conveyor.example:
+#        class: ConveyorBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

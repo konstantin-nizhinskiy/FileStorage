@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+{% endblock %}
+
+{% block body %}
+{#<form action="/loadFile" >
+    <input type="file" multiple>
+    <input type="submit">
+</form>#}
+    <button onclick="test()">send file</button>
+    <script>
+        function test(){
+            var $form = $('<form/>', {
+                        method: 'post',
+                        enctype: 'multipart/form-data'
+                    }),
+                    $input = $('<input/>', {
+                        name: 'file[]',
+                        type: 'file',
+                        multiple:"multiple"
+                    });
+            $form.append($input);
+            $input.one('change',function(){
+                $form.ajaxForm({
+                    url:'fileLoad',
+                    method:'POST',
+                    data:{
+                        type:11
+                    }
+                });
+                $form.submit();
+            });
+            $input.click();
+        }
+    </script>
+{% endblock %}
+{% block javascripts  %}
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.form.js"></script>
+<script src="/js/FileStorage.min.js"></script>
+
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

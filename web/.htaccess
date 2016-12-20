@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+    AddDefaultCharset UTF-8
+    Options -MultiViews
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(?=(?!(get/public))(?!(fsd))) app_dev.php [QSA,L]
+    RewriteRule ^get/public/(\w{2})(\w{2})(\w+)(\.\w+) fs-public/$1/$2/$1$2$3$4 [QSA,L]
+    RewriteRule ^get/public/(\w{2})(\w{2})(\w+) fs-public/$1/$2/$1$2$3.jpg [QSA,L]
+
+    #PreView
+    RewriteRule ^get/public/pre/(\w{2})(\w{2})(\w+)(\.\w+) fs-preview/$1/$2/$1$2$3.pre$4 [QSA,L]
+    RewriteRule ^get/public/pre/(\w{2})(\w{2})(\w+) fs-preview/$1/$2/$1$2$3.pre.jpg [QSA,L]
+    RewriteRule ^get/public/(\d+)/(\w{2})(\w{2})(\w+)(\.\w+) fs-preview/$2/$3/$2$3$4.$1$5 [QSA,L]
+    RewriteRule ^get/public/(\d+)/(\w{2})(\w{2})(\w+) fs-preview/$2/$3/$2$3$4.$1.jpg [QSA,L]
+    RewriteRule ^get/public/(\d+)x(\d+)/(\w{2})(\w{2})(\w+)(\.\w+) fs-preview/$3/$4/$3$4$5.$1$2$6 [QSA,L]
+    RewriteRule ^get/public/(\d+)x(\d+)/(\w{2})(\w{2})(\w+) fs-preview/$3/$4/$3$4$5.$1$2.jpg [QSA,L]
+</IfModule>
